@@ -133,14 +133,4 @@ class _FileListState extends State<FileList> {
   Future getFileType(file) {
     return file.stat();
   }
-
-  // Future<int> deleteFile(file) async {
-  //   try {
-  //     final file = await _localFile;
-
-  //     await file.delete();
-  //   } catch (e) {
-  //     return 0;
-  //   }
-  // }
 }

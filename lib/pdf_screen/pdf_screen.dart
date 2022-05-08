@@ -8,7 +8,7 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:intl/intl.dart';
-import 'package:scanit/fileList.dart';
+import 'package:scanit/file_list.dart';
 
 class PDFScreen extends StatefulWidget {
   const PDFScreen({Key? key}) : super(key: key);
@@ -198,14 +198,6 @@ class _PDFScreenState extends State<PDFScreen> {
   }
 
   savePDF() async {
-    // try {
-    //   final dir = await getApplicationDocumentsDirectory();
-    //   final file = File('${dir.path}/convertedPdfCollection.pdf');
-    // await file.writeAsBytes(await pdf.save());
-    // showPrintedMessage('success', 'saved to Documents');
-    // } catch (e) {
-    //   showPrintedMessage('error', e.toString());
-    // }
     Directory directory;
 
     try {

@@ -9,10 +9,8 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:path_provider/path_provider.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:image_cropper/image_cropper.dart';
-
 import 'package:permission_handler/permission_handler.dart';
-
-// import 'package:edge_detection/edge_detection.dart';
+import 'package:intl/intl.dart';
 
 class CaptureScreen extends StatefulWidget {
   const CaptureScreen({Key? key}) : super(key: key);
@@ -25,10 +23,13 @@ class _CaptureScreenState extends State<CaptureScreen> {
   String imagePath = 'asd';
   String selectedItem = '';
 
+  DateTime now = DateTime.now();
+  DateFormat dateFormat = DateFormat("yyyy-MM-dd").add_Hm();
+
   String finalText = '';
 
   late File pickedImage;
-  String imageName = '';
+  String fileName = '';
 
   bool isImageLoaded = false;
   final pdf = pw.Document();
@@ -229,22 +230,14 @@ class _CaptureScreenState extends State<CaptureScreen> {
   }
 
   savePDF() async {
-    // try {
-    //   final dir = await getApplicationDocumentsDirectory();
-    //   final file = File('${dir.path}/convertedPdfCollection.pdf');
-    // await file.writeAsBytes(await pdf.save());
-    // showPrintedMessage('success', 'saved to Documents');
-    // } catch (e) {
-    //   showPrintedMessage('error', e.toString());
-    // }
     Directory directory;
 
     try {
       if (await _requestPermission(Permission.storage)) {
-        // setState(() {
-        //   fileName += dateFormat.format(now);
-        //   // fileName += '$now';
-        // });
+        setState(() {
+          fileName += dateFormat.format(now);
+          // fileName += '$now';
+        });
         directory = (await getApplicationDocumentsDirectory());
 
         String newPath = "";
@@ -266,7 +259,7 @@ class _CaptureScreenState extends State<CaptureScreen> {
         await directory.create(recursive: true);
       }
       if (await directory.exists()) {
-        File file = File('${directory.path}/$imageName.pdf');
+        File file = File('${directory.path}/$fileName.pdf');
         await file.writeAsBytes(await pdf.save());
         showPrintedMessage('success', 'saved to Documents');
       }
