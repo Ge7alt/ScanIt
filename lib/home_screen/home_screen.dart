@@ -57,21 +57,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             itemList[index],
                             style: GoogleFonts.lato(),
                           ),
-                          // trailing: IconButton(
-                          //   icon: const Icon(
-                          //     Icons.arrow_forward,
-                          //   ),
-                          //   onPressed: () {
-                          //     Navigator.push(
-                          //         context,
-                          //         MaterialPageRoute(
-                          //           builder: (context) => const CaptureScreen(),
-                          //           settings: RouteSettings(
-                          //               arguments: itemList[index]),
-                          //         ));
-                          //   },
-                          //   color: Colors.white,
-                          // ),
                           onTap: () {
                             Navigator.push(
                                 context,
@@ -101,7 +86,6 @@ class _HomeScreenState extends State<HomeScreen> {
           borderRadius: BorderRadius.circular(12),
         ),
       ),
-
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
@@ -137,33 +121,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-
-      // floatingActionButton: FloatingActionButton.extended(
-      //   onPressed: () {
-      //     Navigator.push(
-      //         context,
-      //         MaterialPageRoute(
-      //           builder: (context) => const PDFScreen(),
-      //         ));
-      //   },
-      //   heroTag: const Text("btn3"),
-      //   label: const Text('Image Collection to PDF'),
-      //   icon: const Icon(Icons.picture_as_pdf),
-      //   backgroundColor: Colors.pink,
-      // ),
-
-      // bottomNavigationBar: const BottomAppBar(
-      //   child: Center(
-      //     heightFactor: 4.0,
-      //     child: Text(
-      //       "This is ScanIt Application",
-      //       style: TextStyle(
-      //         fontSize: 10.0,
-      //         color: Colors.lightBlue,
-      //       ),
-      //     ),
-      //   ),
-      // ),
     );
   }
 }

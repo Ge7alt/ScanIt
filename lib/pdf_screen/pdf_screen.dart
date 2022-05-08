@@ -108,7 +108,6 @@ class _PDFScreenState extends State<PDFScreen> {
               ))
         ],
       ),
-
       body: Column(
         children: <Widget>[
           Expanded(
@@ -150,17 +149,6 @@ class _PDFScreenState extends State<PDFScreen> {
           ),
         ],
       ),
-
-      // floatingActionButton: FloatingActionButton.extended(
-      //   label: const Text('Add Images'),
-      //   icon :const Icon(Icons.add_a_photo,
-      // color: Colors.pink,
-      // ) ,
-      //   onPressed: () {
-      //
-      //   getImageFromGallery();
-      //   },),
-
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
@@ -192,7 +180,6 @@ class _PDFScreenState extends State<PDFScreen> {
           ],
         ),
       ),
-
       bottomNavigationBar: const BottomAppBar(
         child: Center(
           heightFactor: 4.0,
