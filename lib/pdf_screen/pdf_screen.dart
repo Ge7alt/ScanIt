@@ -9,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:intl/intl.dart';
 import 'package:scanit/file_list.dart';
+import 'package:image_cropper/image_cropper.dart';
 
 class PDFScreen extends StatefulWidget {
   const PDFScreen({Key? key}) : super(key: key);
@@ -39,9 +40,10 @@ class _PDFScreenState extends State<PDFScreen> {
     pickedImage = File(tempStore!.path);
 
     setState(() {
-      _image.add(File(tempStore.path));
+      //_image.add(File(tempStore.path));
       imagePath = tempStore.path.toString();
       isImageLoaded = true;
+      cropImage(File(tempStore.path));
     });
   }
 
@@ -51,9 +53,31 @@ class _PDFScreenState extends State<PDFScreen> {
     pickedImage = File(tempStore!.path);
 
     setState(() {
-      _image.add(File(tempStore.path));
+      //_image.add(File(tempStore.path));
       imagePath = tempStore.path.toString();
       isImageLoaded = true;
+      cropImage(File(tempStore.path));
+    });
+  }
+
+  cropImage(File picked) async {
+    File? cropped = await ImageCropper.cropImage(
+      androidUiSettings: const AndroidUiSettings(
+        toolbarColor: Colors.blue,
+        toolbarWidgetColor: Colors.white,
+        toolbarTitle: "Crop Image",
+      ),
+      sourcePath: picked.path,
+      aspectRatioPresets: [
+        CropAspectRatioPreset.square,
+        CropAspectRatioPreset.ratio3x2,
+        CropAspectRatioPreset.original,
+        CropAspectRatioPreset.ratio4x3,
+        CropAspectRatioPreset.ratio16x9,
+      ],
+    );
+    setState(() {
+      _image.add(cropped!);
     });
   }
 
